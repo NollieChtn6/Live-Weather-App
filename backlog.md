@@ -4,16 +4,41 @@ Last updated: Mon 18, November
 
 ## Features
 
-- [ ] Select location (form)
-  - [ ] select location manually
-  - [ ] use user browser location data ()
+### Static components
 
-- [ ] Automatically display location selection form if location has not been selected yet
+- [ ] Create app static components (container + hard coded data):
+  - [x] select form (manual selection with dropdown menu)
+  - [x] map
+  - [ ] dashboard (displayng data)
 
-- [ ] Update location
+- [x] Import static components into HomePage
+
+### Dynamic components
+
+- [ ] Display list of availables cities for manual selection:
+  - [ ] fetch public API?
+  - [ ] update selector component
+
+- [ ] Select location (1 option available at time):  make options available depending on user's selection:
+  - [ ] select location manually (data: city)
+  - [ ] place pin on map (data: lat, lng)
+
+- [ ] Dynamically display data on dashboard:
+  - [ ] request with lat and long as params
+  - [ ] request with city as param
+  - [ ] handle location update and data refresh
+  - [ ] update store
 
 ## Design
 
-- [ ] App design
-- [ ] Form design
-- [ ] Dashboard
+- [ ] Create basic layout:
+  - [x] global design and layout
+  - [x] select form (manual selection)
+  - [x] map
+  - [ ] dashboard (displaying data)
+
+- [ ] Refine layout and style:
+  - [ ] HomePage component
+  - [ ] Dashboard component
+  - [ ] LocationForm component
+  - [ ] Map component
