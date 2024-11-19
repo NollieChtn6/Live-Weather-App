@@ -97,3 +97,15 @@ h1 {
   width: 100%;
   flex-grow: 1;
 }
+
+.data-content {
+  background-color: darkslateblue;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  gap: 24px;
+  margin: auto;
+  h3 {
+    font-size: 1.2em;
+  }
+}
