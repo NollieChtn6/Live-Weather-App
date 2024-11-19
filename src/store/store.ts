@@ -1,8 +1,10 @@
 import { create } from "zustand";
 
+type Location = string | [string, string] | null;
+
 type WeatherStore = {
-  location: string | null;
-  selectLocation: (location: string) => void;
+  location: Location;
+  selectLocation: (location: Location) => void;
   fetchWeatherData: () => Promise<void>;
 };
 
