@@ -20,10 +20,7 @@ export function HomePage() {
           <AppMap />
         </div>
         <div className="data-container">
-          <h2>Data</h2>
-          <div className="data-content">
-            <Dashboard />
-          </div>
+          <Dashboard />
         </div>
       </div>
     </>
