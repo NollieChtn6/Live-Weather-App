@@ -1,15 +1,15 @@
 import { create } from "zustand";
 
-type Location = string | [string, string] | null;
+type LocationCoordinates = [number, number] | null;
 
 type WeatherStore = {
-  location: Location;
-  selectLocation: (location: Location) => void;
+  coordinates: LocationCoordinates;
+  selectCoordinates: (coordinates: LocationCoordinates) => void;
   fetchWeatherData: () => Promise<void>;
 };
 
 export const useWeatherStore = create<WeatherStore>((set) => ({
-  location: null,
-  selectLocation: (selectedLocation) => set({ location: selectedLocation }),
+  coordinates: null,
+  selectCoordinates: (selectedCoordinates) => set({ coordinates: selectedCoordinates }),
   fetchWeatherData: async () => {},
 }));
