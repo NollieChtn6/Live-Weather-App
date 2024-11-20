@@ -1,9 +1,10 @@
+import { useEffect } from "react";
 import "leaflet/dist/leaflet.css";
 import { MapContainer, Marker, Popup, TileLayer, useMapEvents, useMap } from "react-leaflet";
 import { useWeatherStore } from "../store/store";
 
 export function AppMap() {
-  const { coordinates, selectCoordinates } = useWeatherStore();
+  const { coordinates, selectCoordinates, fetchWeatherData } = useWeatherStore();
 
   function LocationMarker() {
     const map = useMap();
@@ -27,6 +28,13 @@ export function AppMap() {
       </Marker>
     ) : null;
   }
+
+  useEffect(() => {
+    if (coordinates) {
+      console.log("Fetching weather data for:", coordinates);
+      fetchWeatherData(coordinates);
+    }
+  }, [coordinates, fetchWeatherData]);
 
   const handleGeolocate = () => {
     navigator.geolocation.getCurrentPosition((position) => {
