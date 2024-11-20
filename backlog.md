@@ -1,6 +1,6 @@
 # Weather App Backlog
 
-Last updated: Tue 19, November
+Last updated: Wed 20, November
 
 ## Features
 
@@ -19,10 +19,17 @@ Last updated: Tue 19, November
   - [x] place pin on map (data: lat, lng)
   - [x] geolocate user
 
-- [ ] Dynamically display data on dashboard:
-  - [ ] request with lat and long as params
-  - [ ] handle location update and data refresh
-  - [ ] update store
+- [x] Dynamically display data on dashboard:
+  - [x] request with lat and long as params
+  - [x] handle location update and data refresh
+  - [x] update store
+
+- [ ] Separate weather data for the day and current conditions:
+  - [ ] update dashboard layout and structure
+  - [ ] improve types and data recollection?
+
+- [ ] Display weather alerts on dashboard
+  - [ ] create dedicated popup
 
 ## Design
 
@@ -47,3 +54,5 @@ Last updated: Tue 19, November
 - [ ] Manually select a city:
   - [ ] map lat and long coordinates to a list of cities
   - [ ] select from dropdown menu
+
+- [ ] Display forcast per hour
