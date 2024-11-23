@@ -70,7 +70,7 @@ export function Dashboard() {
         </div>
         <div className="container precip-container">
           <p className="precip-type">
-            Precipitation type: {weatherData.currentConditions.precipitationType}
+            Precipitation type: {weatherData.currentConditions.precipitationType ?? "none"}
           </p>
           <p className="precip-prob">
             Precipitation probability: {weatherData.currentConditions.precipitationProbability}%

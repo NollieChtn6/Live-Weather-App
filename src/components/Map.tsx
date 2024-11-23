@@ -19,6 +19,11 @@ export function AppMap() {
         console.log(`Selected location: lat ${coordinates?.[0]} • long ${coordinates?.[1]}`);
       },
     });
+    useEffect(() => {
+      if (coordinates) {
+        map.flyTo(coordinates, map.getZoom());
+      }
+    }, [map]);
 
     return location ? (
       <Marker position={coordinates ?? [0, 0]}>
