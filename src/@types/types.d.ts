@@ -197,7 +197,7 @@ export type DisplayedWeatherData = {
     sunset: string;
   };
   currentConditions: {
-    temp: number;
+    temperature: number;
     feelsLike: number;
     humidity: number;
     precipitation: number;
@@ -209,7 +209,7 @@ export type DisplayedWeatherData = {
     pressure: number;
     visibility: number;
     cloudCover: number;
-    uvindex: number;
+    uvIndex: number;
     conditions: string;
     icon: string;
     moonphase: number;
