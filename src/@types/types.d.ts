@@ -179,16 +179,39 @@ export type CurrentConditions = {
 
 export type DisplayedWeatherData = {
   date: string;
-  latitude: number;
-  longitude: number;
-  address: string;
-  timezone: string;
-  weatherAlerts: Alert[];
-  dayConditions: string;
-  dayConditionsDescription: string;
-  dayMinTemp: number;
-  dayMinFeelsLike: number;
-  dayMaxTemp: number;
-  dayMaxFeelsLike: number;
-  currentConditions: CurrentConditions;
+  locationData: {
+    latitude: number;
+    longitude: number;
+    address: string;
+    timezone: string;
+  };
+  dayAverageWeather: {
+    weatherAlerts: Alert[] | [];
+    dayConditions: string;
+    dayConditionsDescription: string;
+    dayMinTemp: number;
+    dayMinFeelsLike: number;
+    dayMaxTemp: number;
+    dayMaxFeelsLike: number;
+    sunrise: string;
+    sunset: string;
+  };
+  currentConditions: {
+    temp: number;
+    feelsLike: number;
+    humidity: number;
+    precipitation: number;
+    precipitationProbability: number;
+    snow: number;
+    snowDepth: number;
+    precipitationType: string[];
+    windSpeed: number;
+    pressure: number;
+    visibility: number;
+    cloudCover: number;
+    uvindex: number;
+    conditions: string;
+    icon: string;
+    moonphase: number;
+  };
 };
