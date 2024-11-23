@@ -1,7 +1,10 @@
 import { useWeatherStore } from "../store/store";
+import weatherIcons from "../assets/weatherIcons/iconsIndex";
 
 export function Dashboard() {
   const { weatherData, isLoading, error } = useWeatherStore();
+  const icon = weatherData?.currentConditions.icon as keyof typeof weatherIcons;
+  const weatherIcon = icon ? weatherIcons[icon] : null;
 
   if (isLoading) {
     return <p>Loading weather data...</p>;
@@ -56,7 +59,7 @@ export function Dashboard() {
       <div className="weather-container">
         <h3>Current Conditions</h3>
         <div className="container summary-container">
-          {/* TODO: insert icon here */}
+          <img src={weatherIcon || ""} alt="Weather Icon" className="weather-icon" />
           <p>{weatherData.currentConditions.conditions}</p>
         </div>
         <div className="container precip-container">
