@@ -15,7 +15,7 @@ const API_KEY = import.meta.env.VITE_VISUAL_CROSSING_API_KEY as string;
 export const getWeatherData = async (lat: number, lon: number): Promise<WeatherAPIResponseType> => {
   try {
     const response = await axios.get<WeatherAPIResponseType>(
-      `${API_URL}/${lat},${lon}/today?unitGroup=metric&key=${API_KEY}`,
+      `${API_URL}/${lat},${lon}/today?unitGroup=metric&key=${API_KEY}&iconSet=icons2`,
     ); //&contentType=json
     return response.data;
   } catch (error) {
