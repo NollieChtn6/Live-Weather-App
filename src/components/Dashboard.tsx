@@ -1,5 +1,24 @@
-import { useWeatherStore } from "../store/store";
 import weatherIcons from "../assets/weatherIcons/iconsIndex";
+import { useWeatherStore } from "../store/store";
+import { formatDate } from "../utils/formatDate";
+import { truncateString } from "../utils/truncateString";
+import {
+  dashboardDataContent,
+  dataContainer,
+  date,
+  dateContainer,
+  forecastContainer,
+  locationContainer,
+  message,
+  secondaryData,
+  sectionTitle,
+  sunDataContainer,
+  temp,
+  tempContainer,
+  tempRangeContainer,
+  weatherDataContainer,
+} from "./Dashboard.css";
+import { Loader } from "./Loader";
 
 export function Dashboard() {
   const { weatherData, isLoading, error } = useWeatherStore();
@@ -7,7 +26,7 @@ export function Dashboard() {
   const weatherIcon = icon ? weatherIcons[icon] : null;
 
   if (isLoading) {
-    return <p>Loading weather data...</p>;
+    return <Loader />;
   }
 
   if (error) {
@@ -15,60 +34,64 @@ export function Dashboard() {
   }
 
   if (!weatherData) {
-    return <p>Select a location to see the weather data.</p>;
+    return <p className={message}>Select a location to display weather data.</p>;
   }
+
+  const minifiedLatitude = truncateString(weatherData.locationData.latitude.toString());
+  const minifiedLongitude = truncateString(weatherData.locationData.longitude.toString());
+  const formattedDate = formatDate(weatherData.date);
+
   console.log(weatherData);
   return (
-    <div className="data-content">
-      <h2 className="city">Weather Data</h2>
-      <div className="container location-container">
+    <div className={dashboardDataContent}>
+      <div className={locationContainer}>
         <p className="lat-lng">
-          Lat: {weatherData.locationData.latitude} • Long: {weatherData.locationData.longitude}
+          Lat: {minifiedLatitude} • Long: {minifiedLongitude}
         </p>
-        <p className="city">{weatherData.locationData.timezone}</p>
+        <p className={secondaryData}>{weatherData.locationData.timezone}</p>
       </div>
-      <div className="container date-container">
-        <p className="date">{weatherData.date}</p>
-        <div className="container sun-data-container">
-          <p className="sun-hours">
+      <div className={dateContainer}>
+        <p className={date}>{formattedDate}</p>
+        <div className={sunDataContainer}>
+          <p className={secondaryData}>
             Sunrise: {weatherData.dayAverageWeather.sunrise} | Sunset:{" "}
             {weatherData.dayAverageWeather.sunset}
           </p>
         </div>
       </div>
-      <div className="weather-container">
-        <h3>Today&rsquo;s Forecast</h3>
+      <div className={weatherDataContainer}>
+        <h3 className={sectionTitle}>Today&rsquo;s Forecast</h3>
         {/* TODO: insert weather alerts */}
-        <div className="container temp-range-container">
-          <div className="temp-data min-temp-data">
-            <p className="min-temp">Min: {weatherData.dayAverageWeather.dayMinTemp}°C</p>
-            <p className="feelslike-temp">
+        <div className={tempRangeContainer}>
+          <div className={tempContainer}>
+            <p className={temp}>Min: {weatherData.dayAverageWeather.dayMinTemp}°C</p>
+            <p className={secondaryData}>
               (feels like: {weatherData.dayAverageWeather.dayMinFeelsLike}°C)
             </p>
           </div>
-          <div className="temp-data max-temp-data">
-            <p className="max-temp">Max temp: {weatherData.dayAverageWeather.dayMaxTemp}°C</p>
-            <p className="feelslike-temp">
+          <div className={tempContainer}>
+            <p className={temp}>Max: {weatherData.dayAverageWeather.dayMaxTemp}°C</p>
+            <p className={secondaryData}>
               (feels like: {weatherData.dayAverageWeather.dayMaxFeelsLike}°C)
             </p>
           </div>
+        </div>
+        <div className={forecastContainer}>
           <p className="conditions">{weatherData.dayAverageWeather.dayConditions}</p>
           <p className="description">{weatherData.dayAverageWeather.dayConditionsDescription}</p>
         </div>
       </div>
-      <div className="weather-container">
-        <h3>Current Conditions</h3>
-        <div className="container summary-container">
-          <img src={weatherIcon || ""} alt="Weather Icon" className="weather-icon" />
+      <div className={weatherDataContainer}>
+        <h3 className={sectionTitle}>Current Conditions</h3>
+        <div className={forecastContainer}>
+          <img src={weatherIcon || ""} alt="Weather Icon" className={weatherIcon || undefined} />
           <p>{weatherData.currentConditions.conditions}</p>
         </div>
-        <div className="container precip-container">
-          <p className="current-temperature">{weatherData.currentConditions.temperature}°C</p>
-          <p className="feelslike-temp">
-            (feels like: {weatherData.currentConditions.feelsLike})°C
-          </p>
+        <div className={tempContainer}>
+          <p className={temp}>{weatherData.currentConditions.temperature}°C</p>
+          <p className={secondaryData}>(feels like: {weatherData.currentConditions.feelsLike}°C)</p>
         </div>
-        <div className="container precip-container">
+        <div className={dataContainer}>
           <p className="precip-type">
             Precipitation type: {weatherData.currentConditions.precipitationType ?? "none"}
           </p>
@@ -78,7 +101,7 @@ export function Dashboard() {
           <p className="precip">Precipitation: {weatherData.currentConditions.precipitation}mm</p>
           <p className="humidity">Humidity: {weatherData.currentConditions.humidity}%</p>
         </div>
-        <div className="container cloud-cover-container">
+        <div className={dataContainer}>
           <p className="cloudcover">Cloudcover: {weatherData.currentConditions.cloudCover}%</p>
           <p className="uv-index">UV Index: {weatherData.currentConditions.uvIndex}</p>
         </div>
