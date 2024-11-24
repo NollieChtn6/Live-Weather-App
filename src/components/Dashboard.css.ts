@@ -83,10 +83,6 @@ export const temp = style({
   fontSize: "1rem",
 });
 
-export const feelsLikeTemp = style({
-  fontSize: "0.8rem",
-});
-
 export const tempRangeContainer = style({
   display: "flex",
   gap: "24px",
