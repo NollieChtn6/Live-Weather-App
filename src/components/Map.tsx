@@ -1,7 +1,9 @@
 import { useEffect } from "react";
 import "leaflet/dist/leaflet.css";
-import { MapContainer, Marker, Popup, TileLayer, useMapEvents, useMap } from "react-leaflet";
+import { LocateFixed } from "lucide-react";
+import { MapContainer, Marker, Popup, TileLayer, useMap, useMapEvents } from "react-leaflet";
 import { useWeatherStore } from "../store/store";
+import { button, map } from "./Map.css";
 
 export function AppMap() {
   const { coordinates, selectCoordinates, fetchWeatherData } = useWeatherStore();
@@ -50,13 +52,22 @@ export function AppMap() {
 
   return (
     <>
-      <button type="button" onClick={handleGeolocate}>
-        Geolocate Me!
+      <button type="button" onClick={handleGeolocate} className={button}>
+        <LocateFixed size={16} />
+        Geolocate Me
       </button>
-      <MapContainer id="map" center={[43.533329, 5.43333]} zoom={13} scrollWheelZoom={true}>
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        <LocationMarker />
-      </MapContainer>
+      <div>
+        <MapContainer
+          className={map}
+          id="map"
+          center={[43.533329, 5.43333]}
+          zoom={13}
+          scrollWheelZoom={true}
+        >
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          <LocationMarker />
+        </MapContainer>
+      </div>
     </>
   );
 }
