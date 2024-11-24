@@ -1,19 +1,27 @@
 import { AppMap } from "../components/Map";
 import { Dashboard } from "../components/Dashboard";
+import {
+  homepageContentContainer,
+  homepageSectionContainer,
+  pageContainer,
+  homepageSectionTitle,
+  homepageTitle,
+} from "./HomePage.css";
 
 export function HomePage() {
   return (
-    <>
-      <h1>My Tiny Weather App</h1>
-      <div className="content-container">
-        <div className="settings-container">
-          <h2>Location</h2>
+    <div className={pageContainer}>
+      <h1 className={homepageTitle}>🌤️&nbsp;Another Tiny Weather App&nbsp;☔</h1>
+      <div className={homepageContentContainer}>
+        <div className={homepageSectionContainer}>
+          <h2 className={homepageSectionTitle}>Location</h2>
           <AppMap />
         </div>
-        <div className="data-container">
+        <div className={homepageSectionContainer}>
+          <h2 className={homepageSectionTitle}>Weather</h2>
           <Dashboard />
         </div>
       </div>
-    </>
+    </div>
   );
 }
