@@ -8,7 +8,7 @@ This project aims at displaying weather data based on specific coordinates. I'am
 
 The map was pretty easy to generate, but the challenge was to make it responsive to every coordinates update to ensure a smooth user experience. As such, the view "flies" to the marker on the map whenever coordinates change (either  from geolocation or manual selection). I also took my first steps into "JS-in-CSS" styling with Vanilla-Extract! Fun time! I kept the design of this app very simple, but I enjoyed using Typescript to create styles and layout. I am really excited to discover more features of this library on future projects.
 
-A deployed version is coming soon! 🚀
+A [deployed version](https://weather-app.nolliechtn6.com/) of the project is available! 🚀
 
 ## ✨ Features
 
